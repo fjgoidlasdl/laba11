@@ -87,15 +87,15 @@ class UserTracker extends EventEmitter {
 const app = new AppServer();
 
 app.on('server:started', (port) => {
-    console.log('🚀 Сервер запущен на порту ' + port);
+    console.log('Сервер запущен на порту ' + port);
 });
 
 app.on('request:received', (request) => {
-    console.log('📨 Получен запрос: ' + request.method + ' ' + request.url);
+    console.log('Получен запрос: ' + request.method + ' ' + request.url);
 });
 
 app.on('server:stopped', () => {
-    console.log('🛑 Сервер остановлен');
+    console.log('Сервер остановлен');
 });
 
 app.orderHandler.on('order:start', (orderId) => {
@@ -108,14 +108,14 @@ app.orderHandler.on('order:processing', (data) => {
 
 app.orderHandler.on('order:complete', (data) => {
     const pi = computePi();
-    console.log('💰 Заказ #' + data.orderId + ' завершён на сумму ' + data.sum + ' руб. PI = ' + pi);
+    console.log('Заказ #' + data.orderId + ' завершён на сумму ' + data.sum + ' руб. PI = ' + pi);
 });
 
 logger.setupLogger(app);
 
 const tracker = new UserTracker();
 tracker.on('user:action', (event) => {
-    console.log('👤 Пользователь ' + event.userId + ' совершил действие "' + event.action + '"');
+    console.log('Пользователь ' + event.userId + ' совершил действие "' + event.action + '"');
     console.log('Время: ' + event.timestamp);
     console.log('ID события: ' + event.id);
     console.log('Доп. данные: ' + JSON.stringify(event.metadata));
