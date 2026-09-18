@@ -1,0 +1,11 @@
+node_modules/
+.env
+dist/
+build/
+*.log
+logs.txt
+test-data/
+test-data-promises/
+test-data-hybrid/
+perf-data/
+.DS_Store
