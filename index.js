@@ -4,8 +4,7 @@ const logger = require('./logger');
 
 const STUDENT = {
     name: 'Тимошенко Егор Иванович',
-    group: 477,
-    variant: 23
+    group: 477
 };
 
 function computePi() {
@@ -122,13 +121,9 @@ tracker.on('user:action', (event) => {
     console.log('Доп. данные: ' + JSON.stringify(event.metadata));
 });
 
-tracker.trackAction(STUDENT.variant, 'login', {
-    student: STUDENT.name,
-    group: STUDENT.group,
-    source: 'web'
-});
-tracker.trackAction(STUDENT.variant, 'open-lab', { lab: 12, variant: STUDENT.variant });
-tracker.trackAction(STUDENT.variant, 'create-order', { path: '/order/42' });
+tracker.trackAction(STUDENT.name, 'login', { group: STUDENT.group, source: 'web' });
+tracker.trackAction(STUDENT.name, 'open-lab', { lab: 12, group: STUDENT.group });
+tracker.trackAction(STUDENT.name, 'create-order', { path: '/order/42' });
 
 app.start(3000);
 
